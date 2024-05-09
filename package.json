@@ -1,0 +1,47 @@
+{
+  "name": "create-onlybuild-app",
+  "description": "Setup an onlybuild app with a single command.",
+  "version": "1.0.0",
+  "engines": {
+    "node": ">=20.x"
+  },
+  "type": "module",
+  "bin": {
+    "create-onlybuild-app": "dist/bin/index.js"
+  },
+  "types": "./dist/bin/index.d.ts",
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "5.3.0",
+    "inquirer": "9.2.20",
+    "latest-version": "9.0.0",
+    "update-notifier": "7.0.0"
+  },
+  "devDependencies": {
+    "@types/inquirer": "9.0.7",
+    "@types/node": "20.12.11",
+    "@types/update-notifier": "6.0.8",
+    "typescript": "5.4.5"
+  },
+  "scripts": {
+    "build": "rm -rf dist/ && tsc && chmod +x ./dist/bin/index.js",
+    "prepare": "npm run build"
+  },
+  "keywords": [
+    "javascript",
+    "build",
+    "static"
+  ],
+  "authors": [
+    {
+      "name": "Scott Doxey",
+      "email": "hello@scottdoxey.com",
+      "homepage": "http://scottdoxey.com/"
+    }
+  ],
+  "homepage": "https://github.com/neogeek/create-onlybuild-app",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/neogeek/create-onlybuild-app.git"
+  }
+}

@@ -1,0 +1,10 @@
+.github/
+
+.vscode/
+
+bin/
+!dist/bin/
+
+.prettierrc
+
+tsconfig.json
