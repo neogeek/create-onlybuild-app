@@ -268,7 +268,7 @@ await writeFile(
       scripts: {
         build: 'onlybuild',
         watch: combinedAnswers.watch
-          ? 'npx nodemon -e "*.*" --ignore ./build -x "npm run build"'
+          ? 'npx nodemon --ext "*.*" --ignore ./build -x "npm run build"'
           : undefined,
         serve: combinedAnswers.serve ? 'npx http-server -o build' : undefined
       },
