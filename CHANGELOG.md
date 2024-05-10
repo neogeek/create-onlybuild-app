@@ -1,9 +1,10 @@
 # Changelog
 
-## [HEAD](https://github.com/neogeek/create-onlybuild-app/tree/HEAD) - (2024-05-09)
+## [HEAD](https://github.com/neogeek/create-onlybuild-app/tree/HEAD) - (2024-05-10)
 
 [Full Changelog](https://github.com/neogeek/create-onlybuild-app/compare/v1.0.0...HEAD)
 
+- [feat] Added optional prettier config. [#3](https://github.com/neogeek/create-onlybuild-app/pull/3)
 - [hotfix] Updated React template. [#2](https://github.com/neogeek/create-onlybuild-app/pull/2)
 - [hotfix] Updated html templates. [#1](https://github.com/neogeek/create-onlybuild-app/pull/1)
 
