@@ -46,12 +46,14 @@ let combinedAnswers: {
   name: string;
   typescript: boolean;
   renderer: 'javascript' | 'javascript-html' | 'react';
+  prettier: boolean;
   watch: boolean;
   serve: boolean;
 } = {
   name: 'my-app',
   typescript: false,
   renderer: 'javascript',
+  prettier: true,
   watch: true,
   serve: true
 };
@@ -104,6 +106,12 @@ await inquirer
   .prompt([
     {
       type: 'confirm',
+      name: 'prettier',
+      message: 'Include prettier config?',
+      default: combinedAnswers.prettier
+    },
+    {
+      type: 'confirm',
       name: 'watch',
       message: 'Do you want to watch for changes?',
       default: combinedAnswers.watch
@@ -142,21 +150,26 @@ await mkdir(directory, { recursive: true });
 
 await mkdir(join(directory, '.vscode/'), { recursive: true });
 
-await writeFile(
-  join(directory, '.vscode/extensions.json'),
-  `${JSON.stringify(
-    {
-      recommendations: [
-        combinedAnswers.renderer === 'javascript-html'
-          ? 'bierner.lit-html'
-          : undefined,
-        'esbenp.prettier-vscode'
-      ].filter(Boolean)
-    },
-    null,
-    2
-  )}\n`
-);
+if (
+  combinedAnswers.renderer === 'javascript-html' ||
+  combinedAnswers.prettier
+) {
+  await writeFile(
+    join(directory, '.vscode/extensions.json'),
+    `${JSON.stringify(
+      {
+        recommendations: [
+          combinedAnswers.renderer === 'javascript-html'
+            ? 'bierner.lit-html'
+            : undefined,
+          combinedAnswers.prettier ? 'esbenp.prettier-vscode' : undefined
+        ].filter(Boolean)
+      },
+      null,
+      2
+    )}\n`
+  );
+}
 
 await writeFile(
   join(directory, '.gitignore'),
@@ -164,6 +177,22 @@ await writeFile(
 );
 
 await writeFile(join(directory, '.onlyignore'), `${['*.md'].join('\n')}\n`);
+
+if (combinedAnswers.prettier) {
+  await writeFile(
+    join(directory, '.prettierrc'),
+    JSON.stringify(
+      {
+        arrowParens: 'avoid',
+        singleQuote: true,
+        tabWidth: 2,
+        trailingComma: 'none'
+      },
+      null,
+      2
+    )
+  );
+}
 
 const indexContents = (() => {
   switch (combinedAnswers.renderer) {
