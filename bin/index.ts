@@ -187,7 +187,8 @@ function Hello({ name = 'world' }) {
   return <h1>Hello, {name}!</h1>;
 }
 
-export default renderToString(
+export default \`<!DOCTYPE html>
+\${renderToString(
   <html lang="en">
     <head>
       <title>Hello, world!</title>
@@ -196,7 +197,7 @@ export default renderToString(
       <Hello name="world" />
     </body>
   </html>
-);\n`;
+)}\`;\n`;
     default:
       return `export default \`<!DOCTYPE html>
 <html lang="en">
