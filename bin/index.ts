@@ -170,18 +170,44 @@ const indexContents = (() => {
     case 'javascript-html':
       return `import { html } from 'onlybuild';
 
-export default html\`<h1>Hello, world!</h1>\`;\n`;
+export default html\`<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Hello, world!</title>
+  </head>
+  <body>
+    <h1>Hello, world!</h1>
+  </body>
+</html>\`;\n`;
     case 'react':
       return `import React from 'react';
 import { renderToString } from 'react-dom/server';
 
-function Hello() {
-return <h1>Hello, React!</h1>;
+function Hello({ name = 'world' }) {
+  return <h1>Hello, {name}!</h1>;
 }
 
-export default renderToString(<Hello />);\n`;
+export default renderToString(
+  <html lang="en">
+    <head>
+      <title>Hello, world!</title>
+    </head>
+    <body>
+      <Hello name="world" />
+    </body>
+  </html>
+);\n`;
     default:
-      return `export default '<h1>Hello, world!</h1>';\n`;
+      return `export default \`<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Hello, world!</title>
+  </head>
+  <body>
+    <h1>Hello, world!</h1>
+  </body>
+</html>\`;
+\n`;
   }
 })();
 
