@@ -270,7 +270,7 @@ await writeFile(
         watch: combinedAnswers.watch
           ? 'npx nodemon --ext "*.*" --ignore ./build -x "npm run build"'
           : undefined,
-        serve: combinedAnswers.serve ? 'npx http-server -o build' : undefined
+        serve: combinedAnswers.serve ? 'npx http-server ./build -o' : undefined
       },
       private: true
     },
