@@ -1,5 +1,11 @@
 # Changelog
 
+## [v1.1.2](https://github.com/neogeek/create-onlybuild-app/tree/v1.1.2) - (2024-05-16)
+
+[Full Changelog](https://github.com/neogeek/create-onlybuild-app/compare/v1.1.1...v1.1.2)
+
+- [hotfix] Fixed position of open flag on serve target. [#5](https://github.com/neogeek/create-onlybuild-app/pull/5)
+
 ## [v1.1.1](https://github.com/neogeek/create-onlybuild-app/tree/v1.1.1) - (2024-05-10)
 
 [Full Changelog](https://github.com/neogeek/create-onlybuild-app/compare/v1.1.0...v1.1.1)
